@@ -36,7 +36,7 @@ public class UserController {
 
 	@PostMapping("signup")
 	@ResponseStatus(HttpStatus.CREATED)
-	public User createBand(@RequestBody User user) throws NoSuchAlgorithmException {
+	public User createUser(@RequestBody User user) throws NoSuchAlgorithmException {
 		return this.userService.create(user);
 	}
 	

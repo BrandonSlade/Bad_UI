@@ -14,7 +14,7 @@ import com.revature.Bad_UI.beans.User;
 @Repository
 public class UserRepository {
 
-SessionFactory sf;
+	SessionFactory sf;
 	
 	@Inject
 	public UserRepository(SessionFactory sf) {
