@@ -27,6 +27,14 @@ public class UserService {
 		user.setHashedPassword(user.getPassword());
 		return this.userRepository.create(user);
 	}
+	
+	public User update(User user) {
+		return this.userRepository.update(user);
+	}
+
+	public User deleteById(int id) {
+		return this.userRepository.deleteById(id);
+	}
 
 	public User login(User user) throws NoSuchAlgorithmException {
 		Credentials credentials = new Credentials();
