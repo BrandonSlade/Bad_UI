@@ -30,6 +30,7 @@ public class UserService {
 
 	public User login(User user) throws NoSuchAlgorithmException {
 		Credentials credentials = new Credentials();
+		credentials.setUsername(user.getUsername());
 		credentials.setPassword(user.getPassword());
 		credentials.setHashedPassword(credentials.getPassword());
 		return this.userRepository.login(credentials);

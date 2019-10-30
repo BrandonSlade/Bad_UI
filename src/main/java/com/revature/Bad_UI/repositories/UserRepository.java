@@ -39,7 +39,7 @@ public class UserRepository {
 	public User login(Credentials credentials) throws NoSuchAlgorithmException {
 	Session session = sf.getCurrentSession();
 		
-		List<User> userList = session.createQuery("from User where username = :username")
+		List<User> userList = session.createQuery("from User u where u.username = :username")
 				.setParameter("username", credentials.getUsername()).list();
 		User user = userList.get(0);
 		if(user.getHashedPassword().equals(credentials.getHashedPassword())) {
