@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import com.revature.Bad_UI.hasher.PasswordHasher;
@@ -17,10 +18,12 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int id;
+	
 	@NotNull
 	public String username;
-	@NotNull
-	@Length(min=6, max=18)
+	
+	@Length(min=4, max=40)
+	@Transient
 	public String password;
 	
 	private String hashedPassword;
@@ -103,8 +106,7 @@ public class User {
 				+ hashedPassword + "]";
 	}
 
-	public User(int id, @NotNull String username, @NotNull @Length(min = 6, max = 18) String password,
-			String hashedPassword) {
+	public User(int id, @NotNull String username, @Length(min = 4, max = 40) String password, String hashedPassword) {
 		super();
 		this.id = id;
 		this.username = username;

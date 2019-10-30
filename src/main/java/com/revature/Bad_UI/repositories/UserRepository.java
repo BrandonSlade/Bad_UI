@@ -1,6 +1,7 @@
 package com.revature.Bad_UI.repositories;
 
 import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
 import java.util.List;
 import javax.inject.Inject;
 import org.hibernate.Session;
@@ -38,7 +39,7 @@ public class UserRepository {
 	public User login(Credentials credentials) throws NoSuchAlgorithmException {
 	Session session = sf.getCurrentSession();
 		
-		List<User> userList = session.createQuery("Select u from Users where u.username = :username")
+		List<User> userList = session.createQuery("from User where username = :username")
 				.setParameter("username", credentials.getUsername()).list();
 		User user = userList.get(0);
 		if(user.getHashedPassword().equals(credentials.getHashedPassword())) {
